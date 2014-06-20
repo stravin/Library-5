@@ -26,3 +26,7 @@ table.data {
     max-width: 1000px;
     background: rgba(236, 236, 236, 0.21);
 }
+
+table.data th {
+    background-color: rgba(180, 221, 143, 0.4);
+}
