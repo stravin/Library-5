@@ -1,0 +1,28 @@
+body {
+    padding: 20px;
+    font: 14px sans-serif;
+    background-color: #EBDEA8;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid gray;
+}
+
+th {
+    padding: 6px;
+}
+
+td {
+    padding: 3px;
+}
+
+/* Custom styles */
+
+table.data {
+    max-width: 1000px;
+    background: rgba(236, 236, 236, 0.21);
+}
