@@ -20,14 +20,7 @@ public class AuthorController {
     @RequestMapping(value = "/authors", method = RequestMethod.GET)
     public String listAuthors(ModelMap model) {
 
-        model.addAttribute("message", authorService.findAll());
+        model.addAttribute("authorList", authorService.findAll());
         return "index";
-    }
-
-    @RequestMapping("/hello")
-    public ModelAndView helloWorld() {
-
-        String message = "Hello World, Spring 3.0!";
-        return new ModelAndView("index", "message", message);
     }
 }
