@@ -19,9 +19,11 @@
 <%--<button id="buttonTest">Test button</button>--%>
 <%--</div>--%>
 
+<%-- AUTHORS --%>
+
 <h3>Авторы</h3>
 
-<div id="table">
+<div id="table-authors">
     <c:if test="${!empty authorList}">
         <table class="data">
             <tr>
@@ -34,7 +36,8 @@
                     <td>${author.fio}</td>
                     <td>${author.yearOfBirth}</td>
                     <td>${author.biography}</td>
-                        <%--<td><a href="delete/${contact.id}">delete</a></td>--%>
+                    <%--<td><a href="books/${author.id}">Книги</a></td>--%>
+                    <%--<td><a href="delete/${contact.id}">delete</a></td>--%>
                 </tr>
             </c:forEach>
         </table>
@@ -42,30 +45,81 @@
 
 </div>
 
-<%--<div id="form-add-new">--%>
+<div id="form-addnew-author">
 
-    <%--<form:form method="post" action="addauthor" commandName="author">--%>
+    <form:form method="post" action="addauthor" commandName="author">
 
-        <%--<table>--%>
+        <table>
+            <tr>
+                <td>Ф.И.О.</td>
+                <td><form:input path="fio"/></td>
+            </tr>
+            <tr>
+                <td>Год рождения</td>
+                <td><form:input path="yearOfBirth"/></td>
+            </tr>
+            <tr>
+                <td>Биография</td>
+                <td><form:input path="biography"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Сохранить"/>
+                </td>
+            </tr>
+        </table>
+    </form:form>
+</div>
+
+<%-- BOOKS --%>
+
+<h3>Книги</h3>
+
+<div id="table-books">
+    <c:if test="${!empty bookList}">
+        <table class="data">
+            <tr>
+                <th>Название</th>
+                <th>Год</th>
+                <th>Жанр</th>
+            </tr>
+            <c:forEach items="${bookList}" var="book">
+                <tr>
+                    <td>${book.name}</td>
+                    <td>${book.year}</td>
+                    <%--<td>${book.genre}</td>--%>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+
+</div>
+
+<div id="form-addnew-book">
+
+    <form:form method="post" action="addbook" commandName="book">
+
+        <table>
+            <tr>
+                <td>Название</td>
+                <td><form:input path="name"/></td>
+            </tr>
+            <tr>
+                <td>Год</td>
+                <td><form:input path="year"/></td>
+            </tr>
             <%--<tr>--%>
-                <%--<td>Ф.И.О.</td>--%>
-                <%--<td><form:input path="fio"/></td>--%>
+                <%--<td>Жанр</td>--%>
+                <%--<td><form:input path="genre"/></td>--%>
             <%--</tr>--%>
-            <%--<tr>--%>
-                <%--<td>Год рождения</td>--%>
-                <%--<td><form:input path="yearOfBirth"/></td>--%>
-            <%--</tr>--%>
-            <%--<tr>--%>
-                <%--<td>Биография</td>--%>
-                <%--<td><form:input path="biography"/></td>--%>
-            <%--</tr>--%>
-            <%--<tr>--%>
-                <%--<td colspan="2">--%>
-                    <%--<input type="submit" value="Сохранить"/>--%>
-                <%--</td>--%>
-            <%--</tr>--%>
-        <%--</table>--%>
-    <%--</form:form>--%>
-<%--</div>--%>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Сохранить"/>
+                </td>
+            </tr>
+        </table>
+    </form:form>
+</div>
+
 </body>
 </html>
