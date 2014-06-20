@@ -86,7 +86,7 @@
                 <tr>
                     <td>${book.name}</td>
                     <td>${book.year}</td>
-                    <%--<td>${book.genre}</td>--%>
+                    <td>${book.genre.name}</td>
                 </tr>
             </c:forEach>
         </table>

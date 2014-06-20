@@ -60,6 +60,14 @@ public class Book extends BaseEntity implements Serializable {
         this.year = year;
     }
 
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
