@@ -22,26 +22,25 @@ public class Book extends BaseEntity implements Serializable {
     @Column(name = "year")
     private int year;
 
+    public Book() {
+    }
+
     @ManyToOne(targetEntity = Genre.class)
     @JoinColumn(name = "genre_id", insertable = false, updatable = false)
     private Genre genre;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "ref_authors_books",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
-//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"))
     private Set<Author> authors = new HashSet<Author>();
 
     public Set<Author> getAuthors() {
         return this.authors;
     }
 
-//    public void setAuthors(Set<Author> authors) {
-//        this.authors = authors;
-//    }
-
-    public Book() {
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
     }
 
     public String getName() {
