@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface GenreService {
 
-    Genre findById(Class<Genre> aClass, long id);
+    Genre findById(long id);
     List<Genre> findAll();
     void addGenre(Genre genre);
     void updateGenre(Genre genre);

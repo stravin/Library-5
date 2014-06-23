@@ -20,7 +20,7 @@ public class GenreServiceImpl implements GenreService {
 
     @Override
     @Transactional
-    public Genre findById(Class<Genre> aClass, long id) {
+    public Genre findById(long id) {
         return genreDAO.get(id);
     }
 
