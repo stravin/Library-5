@@ -12,7 +12,11 @@
 <body>
 <h1>Библиотека</h1>
 
-<h3>Авторы</h3>
+<h3>
+    <span class="naviCurrentPage">Авторы</span> |
+    <a href="/books">Книги</a> |
+    <a href="/genres">Жанры</a>
+</h3>
 
 <div id="list">
     <c:if test="${!empty authorList}">
@@ -30,7 +34,7 @@
                     <td>${author.yearOfBirth}</td>
                     <td>${author.biography}</td>
                     <td><a href="/books/${author.id}">Книги</a></td>
-                    <td><a href="/authors/edit/${author.id}">Ред.</a></td>
+                    <td><a href="/authors/edit/${author.id}">Редактировать</a></td>
                 </tr>
             </c:forEach>
         </table>
@@ -38,7 +42,7 @@
 </div>
 
 <div id="edit">
-    <form:form method="post" action="/addauthor" commandName="author">
+    <form:form method="post" action="/authors/add" commandName="author">
         <table>
             <tr>
                 <td colspan="2">

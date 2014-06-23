@@ -5,46 +5,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Библиотека &gt; Все книги</title>
+    <title>Библиотека &gt; Книги</title>
     <link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
 </head>
 
 <body>
 <h1>Библиотека</h1>
 
-<h3>
-    <a href="/authors">Авторы</a> |
-    <span class="naviCurrentPage">Книги</span> |
-    <a href="/genres">Жанры</a>
-</h3>
+<a href="/books">&lt; Отмена</a>
 
-<div id="list">
-    <c:if test="${!empty bookList}">
-        <table class="list">
-            <tr>
-                <th>Название</th>
-                <th>Год</th>
-                <th>Жанр</th>
-                <th>Редактировать книгу</th>
-            </tr>
-            <c:forEach items="${bookList}" var="book">
-                <tr>
-                    <td>${book.name}</td>
-                    <td>${book.year}</td>
-                    <td>${book.genre.name}</td>
-                    <td><a href="/books/edit/${book.id}">Редактировать</a></td>
-                </tr>
-            </c:forEach>
-        </table>
-    </c:if>
-</div>
+<h3>Редактирование книги</h3>
 
 <div id="edit">
-    <form:form method="post" action="/books/add" commandName="book">
+    <form:form method="post" action="/books/update" commandName="book">
+        <form:hidden path="id"/>
         <table>
-            <td colspan="2">
-                <strong>Добавить</strong>
-            </td>
             <tr>
                 <td>Название</td>
                 <td><form:input path="name"/></td>

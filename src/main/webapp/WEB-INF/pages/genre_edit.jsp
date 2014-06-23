@@ -12,35 +12,14 @@
 <body>
 <h1>Библиотека</h1>
 
-<h3>
-    <a href="/authors">Авторы</a> |
-    <a href="/books">Книги</a> |
-    <span class="naviCurrentPage">Жанры</span>
-</h3>
+<a href="/genres">&lt; Отмена</a>
 
-<div id="list">
-    <c:if test="${!empty genreList}">
-        <table class="list">
-            <tr>
-                <th>Название</th>
-                <th>Редактировать жанр</th>
-            </tr>
-            <c:forEach items="${genreList}" var="genre">
-                <tr>
-                    <td>${genre.name}</td>
-                    <td><a href="/genres/edit/${genre.id}">Редактировать</a></td>
-                </tr>
-            </c:forEach>
-        </table>
-    </c:if>
-</div>
+<h3>Редактирование жанра</h3>
 
 <div id="edit">
-    <form:form method="post" action="addgenre" commandName="genre">
+    <form:form method="post" action="/genres/update" commandName="genre">
+        <form:hidden path="id"/>
         <table>
-            <td colspan="2">
-                <strong>Добавить</strong>
-            </td>
             <tr>
                 <td>Название</td>
                 <td><form:input path="name"/></td>
