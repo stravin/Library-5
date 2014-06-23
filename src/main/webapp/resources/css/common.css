@@ -22,11 +22,15 @@ td {
 
 /* Custom styles */
 
-table.data {
+table.list {
     max-width: 1000px;
     background: rgba(236, 236, 236, 0.21);
 }
 
-table.data th {
+table.list th {
     background-color: rgba(180, 221, 143, 0.4);
+}
+
+div#edit {
+    margin-top: 10px;
 }
