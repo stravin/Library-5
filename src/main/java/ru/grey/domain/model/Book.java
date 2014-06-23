@@ -26,7 +26,7 @@ public class Book extends BaseEntity implements Serializable {
     }
 
     @ManyToOne(targetEntity = Genre.class)
-    @JoinColumn(name = "genre_id", insertable = false, updatable = false)
+    @JoinColumn(name = "genre_id")
     private Genre genre;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")

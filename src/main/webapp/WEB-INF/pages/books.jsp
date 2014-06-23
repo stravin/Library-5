@@ -38,6 +38,9 @@
 <div id="edit">
     <form:form method="post" action="/books/addbook" commandName="book">
         <table>
+            <td colspan="2">
+                <strong>Добавить</strong>
+            </td>
             <tr>
                 <td>Название</td>
                 <td><form:input path="name"/></td>
@@ -47,8 +50,9 @@
                 <td><form:input path="year"/></td>
             </tr>
             <tr>
+                <td>Жанр</td>
                 <td>
-                    <form:select path="genre">
+                    <form:select path="genre.id">
                         <form:option value="NONE" label="--- Выберите ---"/>
                         <form:options items="${genreList}" itemLabel="name" itemValue="id"/>
                     </form:select>

@@ -43,8 +43,6 @@ public class BookController {
     public String addBook(@ModelAttribute("book")
                           Book book, BindingResult result) {
 
-        System.out.println(book);
-
         bookService.addBook(book);
 
         return "redirect:/authors";
