@@ -1,5 +1,5 @@
 body {
-    padding: 20px;
+    padding: 20px 30px 100px;
     font: 14px sans-serif;
     background-color: #EBDEA8;
 }
@@ -33,4 +33,8 @@ table.list th {
 
 div#edit {
     margin-top: 10px;
+}
+
+span.naviCurrentPage {
+    color: darkred;
 }
