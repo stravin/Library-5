@@ -22,17 +22,12 @@ public class AuthorController {
     @Autowired
     private AuthorService authorService;
 
-    @Autowired
-    private BookService bookService;
-
-    @RequestMapping(value = "/library", method = RequestMethod.GET)
-    public String listAuthorsAndBooks(ModelMap model) {
+    @RequestMapping(value = "/authors", method = RequestMethod.GET)
+    public String listAuthors(ModelMap model) {
 
         model.addAttribute("author", new Author());
         model.addAttribute("authorList", authorService.findAll());
-        model.addAttribute("book", new Book());
-        model.addAttribute("bookList", bookService.findAll());
-        return "index";
+        return "authors";
     }
 
     @RequestMapping(value = "/addauthor", method = RequestMethod.POST)
@@ -41,15 +36,6 @@ public class AuthorController {
 
         authorService.addAuthor(author);
 
-        return "redirect:/library";
-    }
-
-    @RequestMapping(value = "/addbook", method = RequestMethod.POST)
-    public String addAuthor(@ModelAttribute("book")
-                                Book book, BindingResult result) {
-
-        bookService.addBook(book);
-
-        return "redirect:/library";
+        return "redirect:/authors";
     }
 }
