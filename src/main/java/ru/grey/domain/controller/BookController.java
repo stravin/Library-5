@@ -28,23 +28,48 @@ public class BookController {
     @Autowired
     private GenreService genreService;
 
-    @RequestMapping(value = "/books/{authorId}", method = RequestMethod.GET)
-    public String listBooks(ModelMap model, @PathVariable("authorId") Long authorId) {
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
+    public String listBooks(ModelMap model) {
 
-        model.addAttribute("author", authorService.findById(authorId));
         model.addAttribute("book", new Book());
-        //model.addAttribute("bookList", bookService.findAll());
+        model.addAttribute("bookList", bookService.findAll());
         model.addAttribute("genreList", genreService.findAll());
 
         return "books";
     }
 
-    @RequestMapping(value = "/books/addbook", method = RequestMethod.POST)
+    @RequestMapping(value = "/books/add", method = RequestMethod.POST)
     public String addBook(@ModelAttribute("book")
                           Book book, BindingResult result) {
 
         bookService.addBook(book);
 
-        return "redirect:/authors";
+        return "redirect:/books";
+    }
+
+    @RequestMapping(value = "/books/edit/{bookId}", method = RequestMethod.GET)
+    public String updateBookForm(ModelMap model, @PathVariable("bookId") Long bookId) {
+
+        model.addAttribute("genreList", genreService.findAll());
+        model.addAttribute("book", bookService.findById(bookId));
+
+        return "book_edit";
+    }
+
+    @RequestMapping(value = "/books/update", method = RequestMethod.POST)
+    public String updateBook(@ModelAttribute("book")
+                               Book book, BindingResult result) {
+
+        bookService.updateBook(book);
+
+        return "redirect:/books";
+    }
+
+    @RequestMapping(value = "/books/{authorId}", method = RequestMethod.GET)
+    public String listBooksForAuthor(ModelMap model, @PathVariable("authorId") Long authorId) {
+
+        model.addAttribute("author", authorService.findById(authorId));
+
+        return "author_books";
     }
 }

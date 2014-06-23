@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.grey.domain.model.Genre;
@@ -32,6 +33,23 @@ public class GenreController {
                              Genre genre, BindingResult result) {
 
         genreService.addGenre(genre);
+
+        return "redirect:/genres";
+    }
+
+    @RequestMapping(value = "/genres/edit/{genreId}", method = RequestMethod.GET)
+    public String updateGenreForm(ModelMap model, @PathVariable("genreId") Long genreId) {
+
+        model.addAttribute("genre", genreService.findById(genreId));
+
+        return "genre_edit";
+    }
+
+    @RequestMapping(value = "/genres/update", method = RequestMethod.POST)
+    public String updateGenre(@ModelAttribute("genre")
+                             Genre genre, BindingResult result) {
+
+        genreService.updateGenre(genre);
 
         return "redirect:/genres";
     }

@@ -26,7 +26,7 @@ public class AuthorController {
         model.addAttribute("author", new Author());
         model.addAttribute("authorList", authorService.findAll());
 
-        return "/authors";
+        return "authors";
     }
 
     @RequestMapping(value = "/authors/add", method = RequestMethod.POST)
@@ -35,7 +35,7 @@ public class AuthorController {
 
         authorService.addAuthor(author);
 
-        return "/authors";
+        return "redirect:/authors";
     }
 
     @RequestMapping(value = "/authors/edit/{authorId}", method = RequestMethod.GET)
@@ -43,7 +43,7 @@ public class AuthorController {
 
         model.addAttribute("author", authorService.findById(authorId));
 
-        return "/author_edit";
+        return "author_edit";
     }
 
     @RequestMapping(value = "/authors/update", method = RequestMethod.POST)
