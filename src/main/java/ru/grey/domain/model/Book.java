@@ -29,10 +29,7 @@ public class Book extends BaseEntity implements Serializable {
     @JoinColumn(name = "genre_id", insertable = false, updatable = false)
     private Genre genre;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "ref_authors_books",
-            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"))
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
     private Set<Author> authors = new HashSet<Author>();
 
     public Set<Author> getAuthors() {
