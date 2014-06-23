@@ -17,14 +17,13 @@
 <h3>Книги автора ${author.fio}</h3>
 
 <div id="list">
-    <c:if test="${!empty bookList}">
+    <c:if test="${!empty author.books}">
         <table class="list">
             <tr>
                 <th>Название</th>
                 <th>Год</th>
                 <th>Жанр</th>
             </tr>
-                <%--<c:forEach items="${bookList}" var="book">--%>
             <c:forEach items="${author.books}" var="book">
                 <tr>
                     <td>${book.name}</td>
@@ -37,7 +36,7 @@
 </div>
 
 <div id="edit">
-    <form:form method="post" action="addbook" commandName="book">
+    <form:form method="post" action="/books/addbook" commandName="book">
         <table>
             <tr>
                 <td>Название</td>
@@ -47,10 +46,14 @@
                 <td>Год</td>
                 <td><form:input path="year"/></td>
             </tr>
-                <%--<tr>--%>
-                <%--<td>Жанр</td>--%>
-                <%--<td><form:input path="genre"/></td>--%>
-                <%--</tr>--%>
+            <tr>
+                <td>
+                    <form:select path="genre">
+                        <form:option value="NONE" label="--- Выберите ---"/>
+                        <form:options items="${genreList}" itemLabel="name" itemValue="id"/>
+                    </form:select>
+                </td>
+            </tr>
             <tr>
                 <td colspan="2">
                     <input type="submit" value="Сохранить"/>
