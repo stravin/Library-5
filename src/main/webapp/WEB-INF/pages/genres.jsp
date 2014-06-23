@@ -34,6 +34,9 @@
 <div id="edit">
     <form:form method="post" action="addgenre" commandName="genre">
         <table>
+            <td colspan="2">
+                <strong>Добавить</strong>
+            </td>
             <tr>
                 <td>Название</td>
                 <td><form:input path="name"/></td>
