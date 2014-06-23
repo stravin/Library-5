@@ -1,6 +1,6 @@
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,13 +22,15 @@
                 <th>Год рождения</th>
                 <th>Биография</th>
                 <th>Книги автора</th>
+                <th>Редактировать автора</th>
             </tr>
             <c:forEach items="${authorList}" var="author">
                 <tr>
                     <td>${author.fio}</td>
                     <td>${author.yearOfBirth}</td>
                     <td>${author.biography}</td>
-                    <td><a href="books/${author.id}">Книги</a></td>
+                    <td><a href="/books/${author.id}">Книги</a></td>
+                    <td><a href="/authors/edit/${author.id}">Ред.</a></td>
                 </tr>
             </c:forEach>
         </table>
@@ -36,8 +38,13 @@
 </div>
 
 <div id="edit">
-    <form:form method="post" action="addauthor" commandName="author">
+    <form:form method="post" action="/addauthor" commandName="author">
         <table>
+            <tr>
+                <td colspan="2">
+                    <strong>Добавить</strong>
+                </td>
+            </tr>
             <tr>
                 <td>Ф.И.О.</td>
                 <td><form:input path="fio"/></td>
@@ -48,7 +55,7 @@
             </tr>
             <tr>
                 <td>Биография</td>
-                <td><form:input path="biography"/></td>
+                <td><form:textarea path="biography"/></td>
             </tr>
             <tr>
                 <td colspan="2">
