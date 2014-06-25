@@ -35,5 +35,7 @@
     </c:if>
 </div>
 
+<a href="/books">Добавить</a>
+
 </body>
 </html>
