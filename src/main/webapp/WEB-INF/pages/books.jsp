@@ -25,6 +25,7 @@
                 <th>Название</th>
                 <th>Год</th>
                 <th>Жанр</th>
+                <th>Авторы</th>
                 <th>Редактировать книгу</th>
             </tr>
             <c:forEach items="${bookList}" var="book">
@@ -32,6 +33,11 @@
                     <td>${book.name}</td>
                     <td>${book.year}</td>
                     <td>${book.genre.name}</td>
+                    <td>
+                        <c:forEach items="${book.authors}" var="author" varStatus="loopStatus">
+                            <span>${author.fio}</span><c:if test="${!loopStatus.last}">, </c:if>
+                        </c:forEach>
+                    </td>
                     <td><a href="/books/edit/${book.id}">Редактировать</a></td>
                 </tr>
             </c:forEach>
