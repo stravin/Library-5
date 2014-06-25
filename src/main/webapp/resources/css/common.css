@@ -9,7 +9,7 @@ table {
 }
 
 td, th {
-    border: 1px solid gray;
+    /*border: 1px solid gray;*/
 }
 
 th {
@@ -18,6 +18,11 @@ th {
 
 td {
     padding: 3px;
+}
+
+textarea {
+    width: 400px;
+    height: 150px;
 }
 
 /* Custom styles */
@@ -31,10 +36,31 @@ table.list th {
     background-color: rgba(180, 221, 143, 0.4);
 }
 
+table.list td,
+table.list th {
+    border: 1px solid gray;
+}
+
 div#edit {
     margin-top: 10px;
+    background: rgba(0, 143, 255, 0.14);
+    width: 600px;
+    padding: 30px;
 }
 
 span.naviCurrentPage {
-    color: darkred;
+    color: rgb(0, 92, 255);
+}
+
+select.multipleSelect {
+    min-width: 200px;
+    min-height: 6em;
+}
+
+select.multipleSelect.bookauthors {
+    height: 80px;
+}
+
+select.multipleSelect.allauthors {
+    height: 200px;
 }

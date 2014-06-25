@@ -7,7 +7,7 @@ import ru.grey.domain.dao.AuthorDAO;
 import ru.grey.domain.model.Author;
 import ru.grey.domain.service.AuthorService;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by stravin on 18.06.2014.
@@ -26,7 +26,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     @Transactional
-    public List<Author> findAll() {
+    public Set<Author> findAll() {
         return authorDAO.getAll();
     }
 

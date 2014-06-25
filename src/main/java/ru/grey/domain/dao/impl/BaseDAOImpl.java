@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import ru.grey.domain.dao.BaseDAO;
 import ru.grey.domain.model.BaseEntity;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by stravin on 17.06.2014.
@@ -33,8 +34,24 @@ public abstract class BaseDAOImpl<T extends BaseEntity> implements BaseDAO<T> {
     }
 
     @Override
+    public void save(T item) {
+        getSession().save(item);
+    }
+
+    @Override
     public void update(T item) {
-        getSession().update(item);
+        getSession().merge(item);
+    }
+
+    @Override
+    public void saveOrUpdate(T item) {
+        getSession().saveOrUpdate(item);
+    }
+
+    public void updateAll(T ... items){
+        for (T t : items){
+            getSession().saveOrUpdate(t);
+        }
     }
 
     @Override
@@ -43,8 +60,8 @@ public abstract class BaseDAOImpl<T extends BaseEntity> implements BaseDAO<T> {
     }
 
     @Override
-    public List<T> getAll() {
-        return getSession().createQuery("from " + this.type.getSimpleName()).list();
+    public Set<T> getAll() {
+        return new HashSet<T>(getSession().createQuery("from " + this.type.getSimpleName()).list());
     }
 
     protected Session getSession() {

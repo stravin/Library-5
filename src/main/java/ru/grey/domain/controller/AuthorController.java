@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.grey.domain.model.Author;
 import ru.grey.domain.service.AuthorService;
+import ru.grey.domain.service.BookService;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by stravin on 19.06.2014.
@@ -19,6 +23,9 @@ public class AuthorController {
 
     @Autowired
     private AuthorService authorService;
+
+    @Autowired
+    private BookService bookService;
 
     @RequestMapping(value = "/authors", method = RequestMethod.GET)
     public String listAuthors(ModelMap model) {
@@ -53,5 +60,18 @@ public class AuthorController {
         authorService.updateAuthor(author);
 
         return "redirect:/authors";
+    }
+
+    @RequestMapping(value = "/authors/{bookId}", method = RequestMethod.GET)
+    public String listAuthorsForBook(ModelMap model, @PathVariable("bookId") Long bookId) {
+
+        model.addAttribute("book", bookService.findById(bookId));
+
+        Set<Author> allAuthors = new HashSet<Author>();
+        model.addAttribute("authors", allAuthors);
+
+        model.addAttribute("authorList", authorService.findAll());
+
+        return "book_authors";
     }
 }

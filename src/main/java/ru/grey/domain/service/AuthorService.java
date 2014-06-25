@@ -2,7 +2,7 @@ package ru.grey.domain.service;
 
 import ru.grey.domain.model.Author;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by stravin on 18.06.2014.
@@ -11,7 +11,7 @@ import java.util.List;
 public interface AuthorService {
 
     Author findById(long id);
-    List<Author> findAll();
+    Set<Author> findAll();
     void addAuthor(Author author);
     void updateAuthor(Author author);
 }

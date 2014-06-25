@@ -6,7 +6,7 @@ import ru.grey.domain.model.Book;
 import ru.grey.domain.service.AuthorService;
 import ru.grey.domain.service.BookService;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by stravin on 18.06.2014.
@@ -30,7 +30,7 @@ public class Start {
         // save it
         authorService.addAuthor(newAuthor);
 
-        List<Author> authors = authorService.findAll();
+        Set<Author> authors = authorService.findAll();
         for (Author a : authors) {
             System.out.println(a);
         }
@@ -41,7 +41,7 @@ public class Start {
 //        Book book = bookService.findById(3L);
 //        System.out.println(book);
 
-        List<Book> books = bookService.findAll();
+        Set<Book> books = bookService.findAll();
         for (Book b : books) {
             System.out.println(b);
         }
@@ -50,7 +50,7 @@ public class Start {
         bookForModify.setYear(2000);
         bookService.updateBook(bookForModify);
 
-        List<Book> booksAfterMod = bookService.findAll();
+        Set<Book> booksAfterMod = bookService.findAll();
         for (Book b : booksAfterMod) {
             System.out.println(b);
         }

@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ru.grey.domain.model.Author;
 import ru.grey.domain.model.Book;
 import ru.grey.domain.service.AuthorService;
 import ru.grey.domain.service.BookService;
 import ru.grey.domain.service.GenreService;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by stravin on 19.06.2014.
@@ -53,14 +57,30 @@ public class BookController {
         model.addAttribute("genreList", genreService.findAll());
         model.addAttribute("book", bookService.findById(bookId));
 
+        Set<Author> bookAuthors = (Set<Author>) bookService.findById(bookId).getAuthors();
+        model.addAttribute("bookauthors", bookAuthors);
+
+        Set<Author> allAuthors = (Set<Author>) authorService.findAll();
+        model.addAttribute("allauthors", allAuthors);
+
         return "book_edit";
     }
 
     @RequestMapping(value = "/books/update", method = RequestMethod.POST)
     public String updateBook(@ModelAttribute("book")
-                               Book book, BindingResult result) {
+                             Book book1, BindingResult result) {
 
-        bookService.updateBook(book);
+        Book theBook = bookService.findById(book1.getId());
+
+        Set<Author> updatedAuthors = new HashSet<Author>();
+        for (Long id : book1.getAuthorids()) {
+            Author author = authorService.findById(id);
+            updatedAuthors.add(author);
+        }
+
+        theBook.setAuthors(updatedAuthors);
+
+        bookService.updateBook(theBook);
 
         return "redirect:/books";
     }

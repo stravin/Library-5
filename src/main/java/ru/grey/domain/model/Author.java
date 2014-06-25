@@ -1,6 +1,11 @@
 package ru.grey.domain.model;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,10 +30,7 @@ public class Author extends BaseEntity implements Serializable {
     public Author() {
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "ref_authors_books",
-            joinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"))
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors")
     private Set<Book> books = new HashSet<Book>();
 
     public Set<Book> getBooks() {
@@ -61,6 +63,17 @@ public class Author extends BaseEntity implements Serializable {
 
     public void setBiography(String biography) {
         this.biography = biography;
+    }
+
+    public void addBook(Book book) {
+        if (this.books == null) {
+            books = new HashSet<Book>();
+        }
+        this.books.add(book);
+    }
+
+    public void deleteBook(Book book) {
+        this.books.remove(book);
     }
 
     @Override

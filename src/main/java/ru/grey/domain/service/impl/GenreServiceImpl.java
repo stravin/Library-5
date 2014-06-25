@@ -7,7 +7,7 @@ import ru.grey.domain.dao.GenreDAO;
 import ru.grey.domain.model.Genre;
 import ru.grey.domain.service.GenreService;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by stravin on 18.06.2014.
@@ -26,7 +26,7 @@ public class GenreServiceImpl implements GenreService {
 
     @Override
     @Transactional
-    public List<Genre> findAll() {
+    public Set<Genre> findAll() {
         return genreDAO.getAll();
     }
 
