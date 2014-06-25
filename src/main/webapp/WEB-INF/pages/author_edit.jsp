@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td>Биография</td>
-                <td><form:input path="biography"/></td>
+                <td><form:textarea path="biography"/></td>
             </tr>
             <tr>
                 <td colspan="2">
