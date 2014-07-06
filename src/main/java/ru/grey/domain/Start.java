@@ -1,4 +1,4 @@
-package ru.grey.domain.service.impl;
+package ru.grey.domain;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.grey.domain.model.Author;
