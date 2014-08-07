@@ -10,7 +10,7 @@
 
     <properties>
         <spring.version>3.1.0.RELEASE</spring.version>
-        <hib.version>3.6.10.Final</hib.version>
+        <hib.version>3.6.4.Final</hib.version>
         <pgsql.version>9.1-901-1.jdbc4</pgsql.version>
     </properties>
 

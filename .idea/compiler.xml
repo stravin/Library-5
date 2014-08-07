@@ -25,6 +25,9 @@
         <module name="Library-5" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Library-5" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

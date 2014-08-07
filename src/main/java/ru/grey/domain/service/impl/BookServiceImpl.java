@@ -44,6 +44,6 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public void updateBook(Book book) {
-        bookDAO. update(book);
+        bookDAO.update(book);
     }
 }
